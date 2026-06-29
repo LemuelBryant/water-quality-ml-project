@@ -20,7 +20,7 @@ Predict water potability using machine learning techniques.
 - [x] Environment setup
 - [x] Dataset acquisition
 - [x] Initial data exploration
-- [ ] Data cleaning
-- [ ] Exploratory data analysis
+- [x] Data cleaning
+- [x] Exploratory data analysis
 - [ ] Modeling
 - [ ] Flask website
