@@ -2,7 +2,7 @@
 
 ## Objective
 
-Predict water potability using machine learning techniques.
+Build a machine learning model to classify water samples as potable or non-potable using water quality measurements while demonstrating the core steps of a data science workflow.
 
 ## Tools
 
@@ -14,13 +14,15 @@ Predict water potability using machine learning techniques.
 - Scikit-learn
 - Jupyter Notebook
 - Flask (planned)
+- Git and Github
 
 ## Project Status
 
+- [x] Github repository
 - [x] Environment setup
 - [x] Dataset acquisition
 - [x] Initial data exploration
 - [x] Data cleaning
 - [x] Exploratory data analysis
-- [ ] Modeling
+- [x] Modeling
 - [ ] Flask website
