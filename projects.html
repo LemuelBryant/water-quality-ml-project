@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Projects | Data Science Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Portfolio</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="py-5 bg-light text-center">
+  <div class="container">
+    <h1 class="display-5">Projects</h1>
+    <p class="lead">
+      A collection of data science and machine learning projects using Python, Pandas, and Scikit-learn.
+    </p>
+  </div>
+</header>
+
+<!-- PROJECT CARDS -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="row g-4">
+
+      <!-- PROJECT 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+
+          <img src="images/water-quality/heatmap.png" class="card-img-top" alt="Water Quality Heatmap">
+
+          <div class="card-body">
+            <h5 class="card-title">Water Potability Prediction</h5>
+
+            <p class="card-text">
+              Machine learning classification model to predict whether water is potable using chemical properties.
+            </p>
+
+            <ul class="small">
+              <li>EDA & data cleaning</li>
+              <li>Median imputation</li>
+              <li>Random Forest model</li>
+              <li>67% accuracy</li>
+            </ul>
+
+            <a href="water-quality.html" class="btn btn-primary btn-sm">
+              View Project
+            </a>
+
+            <a href="https://github.com/YOUR_USERNAME/water-quality-ml-project"
+               target="_blank"
+               class="btn btn-outline-secondary btn-sm">
+              GitHub
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PROJECT 2 (PLACEHOLDER) -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+
+          <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Project placeholder">
+
+          <div class="card-body">
+            <h5 class="card-title">Future Project</h5>
+
+            <p class="card-text">
+              Placeholder for your next machine learning project.
+            </p>
+
+            <ul class="small">
+              <li>Coming soon</li>
+              <li>New dataset</li>
+              <li>New ML technique</li>
+            </ul>
+
+            <button class="btn btn-secondary btn-sm" disabled>
+              In Progress
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PROJECT 3 (PLACEHOLDER) -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+
+          <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Project placeholder">
+
+          <div class="card-body">
+            <h5 class="card-title">Future Project</h5>
+
+            <p class="card-text">
+              Placeholder for another ML or data analysis project.
+            </p>
+
+            <ul class="small">
+              <li>Coming soon</li>
+              <li>EDA + modeling</li>
+              <li>Visualization focus</li>
+            </ul>
+
+            <button class="btn btn-secondary btn-sm" disabled>
+              In Progress
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+  <p class="mb-0">© 2026 Data Science Portfolio</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

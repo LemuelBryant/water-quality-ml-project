@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Potability Prediction | Data Science Portfolio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            Data Science Portfolio
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">
+                        Projects
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="water-quality.html">
+                        Water Quality
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- Hero -->
+
+<header class="bg-light py-5">
+
+    <div class="container">
+
+        <h1 class="display-4">
+            Water Potability Prediction Using Machine Learning
+        </h1>
+
+        <p class="lead">
+
+            An end-to-end data science project demonstrating
+            data cleaning, exploratory data analysis,
+            machine learning, and model evaluation using
+            Python and Scikit-learn.
+
+        </p>
+
+        <a class="btn btn-primary"
+           href="https://github.com/LEMUELBRYANT/water-quality-ml-project"
+           target="_blank">
+
+            GitHub Repository
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- Main Content -->
+
+<div class="container my-5">
+
+<div class="row">
+
+<!-- Table of Contents -->
+
+<div class="col-lg-3">
+
+<div class="sticky-top pt-3">
+
+<h4>Contents</h4>
+
+<div class="list-group">
+
+<a href="#overview" class="list-group-item list-group-item-action">
+Project Overview
+</a>
+
+<a href="#dataset" class="list-group-item list-group-item-action">
+Dataset
+</a>
+
+<a href="#cleaning" class="list-group-item list-group-item-action">
+Data Cleaning
+</a>
+
+<a href="#eda" class="list-group-item list-group-item-action">
+Exploratory Data Analysis
+</a>
+
+<a href="#modeling" class="list-group-item list-group-item-action">
+Model Development
+</a>
+
+<a href="#results" class="list-group-item list-group-item-action">
+Results
+</a>
+
+<a href="#findings" class="list-group-item list-group-item-action">
+Key Findings
+</a>
+
+<a href="#learning" class="list-group-item list-group-item-action">
+Future Improvements
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Case Study -->
+
+<div class="col-lg-9">
+
+<section id="overview" class="mb-5">
+
+<h2>Project Overview</h2>
+
+<p>
+
+The objective of this project was to develop a baseline machine learning model capable of predicting whether a water
+ sample is potable using physicochemical measurements. The project demonstrates an end-to-end data science workflow,
+ including data cleaning, exploratory data analysis, model development, and evaluation.
+
+</p>
+
+<table class="table table-bordered w-75">
+
+<tr>
+<th>Dataset</th>
+<td>Kaggle Water Quality and Potability Dataset</td>
+</tr>
+
+<tr>
+<th>Problem Type</th>
+<td>Binary Classification</td>
+</tr>
+
+<tr>
+<th>Target</th>
+<td>Potability</td>
+</tr>
+
+<tr>
+<th>Model</th>
+<td>Random Forest Classifier</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section id="dataset" class="mb-5">
+
+<h2>Dataset</h2>
+
+<p>
+
+The dataset contains 3,276 water samples with nine numerical water quality measurements and a binary target 
+indicating whether the water is potable.
+
+</p>
+
+</section>
+
+
+<section id="cleaning" class="mb-5">
+
+<h2>Data Cleaning</h2>
+
+<p>
+    The original dataset contained missing values in three features:
+    <strong>pH</strong>, <strong>Sulfate</strong>, and
+    <strong>Trihalomethanes</strong>. Before cleaning the data, I
+    evaluated the extent of missingness using both the total number
+    of missing values and the percentage of missing values in each
+    column.
+</p>
+
+<table class="table table-striped table-bordered w-75">
+    <thead class="table-light">
+        <tr>
+            <th>Feature</th>
+            <th>Missing Values</th>
+            <th>Missing (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>pH</td>
+            <td>491</td>
+            <td>14.99%</td>
+        </tr>
+        <tr>
+            <td>Sulfate</td>
+            <td>781</td>
+            <td>23.84%</td>
+        </tr>
+        <tr>
+            <td>Trihalomethanes</td>
+            <td>162</td>
+            <td>4.95%</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    This project uses a straightforward baseline approach to handling
+    missing data. Missing values in the numeric features were
+    replaced with each column's median value. Median imputation
+    preserves all observations while reducing the influence of
+    extreme values compared with mean imputation.
+</p>
+
+<p>
+    After imputation, I verified that no missing values remained in
+    the dataset before saving the cleaned data for exploratory data
+    analysis and machine learning.
+</p>
+
+</section>
+
+
+<section id="eda" class="mb-5">
+
+<h2>Exploratory Data Analysis</h2>
+
+<h4>Class Distribution</h4>
+
+<img
+src="images/water-quality/class_distribution.png"
+class="img-fluid rounded shadow mb-3"
+alt="Class Distribution">
+
+<p>
+    The class distribution shows that the dataset contains more non-potable
+    water samples than potable samples. Of the 3,276 observations,
+    1,998 (61%) are labeled as non-potable, while 1,278 (39%) are labeled
+    as potable. Although both classes are well represented, the imbalance
+    means that a model trained on this data has more examples of
+    non-potable water to learn from than potable water.
+</p>
+
+<p>
+    This imbalance is important to consider when evaluating model
+    performance. Accuracy alone may not fully reflect how well the model
+    identifies potable water, so additional metrics such as precision,
+    recall, F1-score, and the confusion matrix were used to provide a more
+    complete evaluation.
+</p>
+
+
+<h4>Correlation Heatmap</h4>
+
+<img
+src="images/water-quality/heatmap.png"
+class="img-fluid rounded shadow mb-3"
+alt="Correlation Heatmap">
+
+<p>
+    The correlation heatmap was used to examine the linear relationships
+    between the water quality features and the target variable,
+    <strong>Potability</strong>. Overall, the dataset exhibits weak
+    correlations, indicating that no single feature is a strong predictor
+    of whether a water sample is potable.
+</p>
+
+<p>
+    The strongest relationships are observed among several of the water
+    quality measurements, including <strong>pH</strong>,
+    <strong>Hardness</strong>, <strong>Solids</strong>, and
+    <strong>Sulfate</strong>. These correlations are still relatively
+    modest, suggesting that the features provide complementary information
+    rather than being highly redundant.
+</p>
+
+<p>
+    The correlations between the individual features and the target
+    variable are all close to zero. This suggests that predicting water
+    potability is not driven by any single measurement but instead depends
+    on the combined influence of multiple water quality characteristics.
+    This observation supports the use of a machine learning model capable
+    of learning complex relationships among the features.
+</p>
+
+<h4>pH by Potability</h4>
+
+<img
+src="images/water-quality/boxplot.png"
+class="img-fluid rounded shadow mb-3"
+alt="Boxplot">
+
+<p>
+    This boxplot compares the distribution of pH values between potable
+    and non-potable water samples. The median pH for both classes is
+    very similar, and most observations fall within the typical neutral
+    range of approximately 6 to 8.
+</p>
+
+<p>
+    The spread of pH values is slightly wider for non-potable samples,
+    with more observations extending toward the extreme ends of the
+    scale. Potable samples appear more concentrated within the central
+    range, although there is still significant overlap between the two
+    classes.
+</p>
+
+<p>
+    The horizontal lines (whiskers) represent the range of non-outlier
+    values, while individual points beyond the whiskers indicate
+    potential outliers. The overlap between the two distributions
+    suggests that pH alone is not a strong discriminator of water
+    potability, reinforcing the need for a multivariate machine learning
+    approach.
+</p>
+
+
+<h4>Pairplot</h4>
+
+<img
+src="images/water-quality/pairplot.png"
+class="img-fluid rounded shadow mb-3"
+alt="Pairplot">
+
+<p>
+    The pairplot was used to visually explore relationships between
+    selected features: <strong>pH</strong>, <strong>Hardness</strong>,
+    <strong>Solids</strong>, and <strong>Sulfate</strong>, with points
+    colored by water <strong>Potability</strong>.
+</p>
+
+<p>
+    Across most feature combinations, there is substantial overlap
+    between potable and non-potable samples. The distributions do not
+    show clear separation between classes, and the scatterplots do not
+    reveal strong linear patterns that distinguish potability.
+</p>
+
+<p>
+    This reinforces earlier findings from the correlation heatmap:
+    individual features alone provide limited predictive power. The
+    lack of clear class separation suggests that a successful model
+    must rely on combining multiple weak signals rather than any
+    single feature.
+</p>
+
+</section>
+
+
+<section id="modeling" class="mb-5">
+
+<h2>Model Development</h2>
+
+<p>
+    After completing data cleaning and exploratory data analysis, the next step
+    was to prepare the dataset for machine learning. The goal was to build a
+    baseline classification model capable of predicting water potability.
+</p>
+
+<h4>Train/Test Split</h4>
+
+<p>
+    The dataset was split into training and testing sets to evaluate how well
+    the model generalizes to unseen data. The training set was used to fit the
+    model, while the test set was reserved for final evaluation. This approach
+    helps ensure that model performance reflects real-world predictive ability
+    rather than memorization of the training data.
+</p>
+
+<h4>Model Selection: Random Forest</h4>
+
+<p>
+    A Random Forest Classifier was selected as the baseline model for this
+    project. Random Forest is an ensemble learning method that builds multiple
+    decision trees and combines their outputs to improve predictive accuracy
+    and reduce overfitting. It performs well on structured tabular data and
+    requires minimal preprocessing, making it a strong starting point for this
+    classification problem.
+</p>
+
+<h4>Training Process</h4>
+
+<p>
+    The model was trained using the training dataset containing water quality
+    measurements as input features and potability as the target variable. During
+    training, the Random Forest algorithm built multiple decision trees using
+    random subsets of the data and features to learn patterns associated with
+    potable and non-potable water samples.
+</p>
+
+<h4>Prediction Workflow</h4>
+
+<p>
+    Once trained, the model was used to generate predictions on the test set.
+    Each water sample in the test data was evaluated by the ensemble of decision
+    trees, and the final prediction was determined by majority voting across the
+    trees. These predictions were then compared to the actual values to evaluate
+    model performance using classification metrics.
+</p>
+
+</section>
+
+
+<section id="results" class="mb-5">
+
+<h2>Model Performance</h2>
+
+<p>
+    The performance of the Random Forest classifier was evaluated on the
+    held-out test set using multiple metrics, including accuracy,
+    precision, recall, F1-score, and a confusion matrix. These metrics
+    provide a more complete view of model performance than accuracy alone,
+    especially given the moderate class imbalance in the dataset.
+</p>
+
+<h4>Accuracy</h4>
+
+<p>
+    The model achieved an overall accuracy of approximately
+    <strong>67%</strong> on the test data. While this indicates that the
+    model correctly predicts the majority of samples, accuracy alone does
+    not fully describe performance across both classes.
+</p>
+
+<h4>Classification Report</h4>
+
+<p>
+    The classification report shows that the model performs better at
+    identifying non-potable water (class 0) than potable water (class 1).
+    Recall for non-potable samples is higher, meaning the model is more
+    effective at correctly identifying unsafe water than safe water.
+</p>
+
+<table class="table table-bordered w-75">
+    <thead class="table-light">
+        <tr>
+            <th>Class</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>Support</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Non-Potable (0)</td>
+            <td>0.70</td>
+            <td>0.85</td>
+            <td>0.77</td>
+            <td>412</td>
+        </tr>
+        <tr>
+            <td>Potable (1)</td>
+            <td>0.60</td>
+            <td>0.38</td>
+            <td>0.46</td>
+            <td>244</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    These results suggest that the model is biased toward predicting the
+    majority patterns associated with non-potable water. In particular,
+    the lower recall for potable water indicates that some safe water
+    samples are being incorrectly classified as non-potable.
+</p>
+
+<h4>Confusion Matrix</h4>
+
+<img
+src="images/water-quality/confusion_matrix.png"
+class="img-fluid rounded shadow mb-3"
+alt="Confusion Matrix">
+
+<p>
+    The confusion matrix further illustrates the model’s strengths and
+    weaknesses. The model correctly identifies a large portion of
+    non-potable samples, but it struggles more with correctly identifying
+    potable samples. This trade-off is important in real-world scenarios,
+    where false negatives (classifying potable water as unsafe) may have
+    different implications than false positives.
+</p>
+
+<p>
+    Overall, the model provides a reasonable baseline performance and
+    demonstrates that meaningful patterns exist in the dataset, but also
+    highlights that predicting water potability is a challenging
+    classification problem.
+</p>
+
+</section>
+
+
+<section id="findings" class="mb-5">
+
+<h2>Key Findings</h2>
+
+<ul>
+    <li>
+        The dataset shows a moderate class imbalance, with more non-potable
+        water samples than potable samples (approximately 61% vs. 39%).
+    </li>
+
+    <li>
+        No single feature has a strong correlation with water potability,
+        indicating that prediction requires combining multiple weak signals
+        rather than relying on individual variables.
+    </li>
+
+    <li>
+        Potable and non-potable samples exhibit significant overlap across
+        feature distributions, making the classification problem inherently
+        challenging.
+    </li>
+
+    <li>
+        Median imputation provided a simple and effective baseline method
+        for handling missing values while preserving all observations in
+        the dataset.
+    </li>
+
+    <li>
+        The Random Forest model achieved moderate performance, with higher
+        accuracy in identifying non-potable water compared to potable water.
+    </li>
+
+    <li>
+        Recall for potable water was relatively low, indicating that some
+        safe water samples were misclassified as non-potable.
+    </li>
+
+    <li>
+        Overall, the results suggest that water potability prediction is a
+        complex classification problem that benefits from ensemble models
+        but may require additional feature engineering or advanced modeling
+        techniques for improved performance.
+    </li>
+</ul>
+
+</section>
+
+
+<section id="learning" class="mb-5">
+
+<h2>What I Learned</h2>
+
+<p>
+    This project served as a practical introduction to building a complete
+    machine learning workflow from raw data to model evaluation. While the
+    model itself is intended as a baseline, the project provided several
+    important technical and analytical takeaways.
+</p>
+
+<ul>
+    <li>
+        Real-world datasets often contain missing values that must be
+        addressed before modeling. Simple strategies such as median
+        imputation can be effective baseline approaches for preserving data
+        integrity.
+    </li>
+
+    <li>
+        Exploratory data analysis is critical for understanding the
+        limitations of a dataset. In this case, most features showed weak
+        individual correlation with the target variable.
+    </li>
+
+    <li>
+        Visualization tools such as boxplots, heatmaps, and pairplots are
+        essential for identifying distribution overlap and feature
+        relationships that are not obvious from raw statistics alone.
+    </li>
+
+    <li>
+        Predictive performance is often driven by combinations of features
+        rather than single variables, especially in structured tabular
+        datasets.
+    </li>
+
+    <li>
+        Accuracy alone is not sufficient for evaluating classification
+        models. Metrics such as precision, recall, and F1-score provide a
+        more complete understanding of model behavior.
+    </li>
+
+    <li>
+        The Random Forest algorithm provides a strong baseline model for
+        tabular classification problems due to its ability to capture
+        non-linear relationships and interactions between features.
+    </li>
+
+    <li>
+        Building this project reinforced the importance of a structured
+        workflow: data cleaning → exploratory analysis → modeling →
+        evaluation → interpretation.
+    </li>
+</ul>
+
+<p>
+    Overall, this project strengthened my understanding of the end-to-end
+    machine learning process and how to translate raw data into a structured
+    analytical workflow.
+</p>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer class="bg-dark text-white text-center py-3">
+
+<p class="mb-0">
+
+© 2026 Lemuel Bryant • Data Science Portfolio
+
+</p>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

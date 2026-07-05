@@ -13,7 +13,6 @@ Develop a baseline machine learning model to predict whether a water sample is p
 - Seaborn
 - Scikit-learn
 - Jupyter Notebook
-- Flask (planned)
 - Git and Github
 
 ## Project Progress
@@ -25,7 +24,6 @@ Develop a baseline machine learning model to predict whether a water sample is p
 - [x] Data cleaning
 - [x] Exploratory data analysis
 - [x] Modeling
-- [ ] Flask website
 
 ## Dataset
 
